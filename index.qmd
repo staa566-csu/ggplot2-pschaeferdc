@@ -1,0 +1,29 @@
+---
+title: "staa566_hw1"
+author: "Paul Schaefer"
+format: html
+editor: visual
+---
+
+```{r data import, include=FALSE}
+#Data import and cleaning
+library(tidyverse)
+library(ggthemes)
+library(viridis)
+data <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\ice.csv")
+```
+
+## Graph
+
+```{r}
+p_ice <-ggplot(data = data,
+       mapping = aes(year, min_extent)) +
+  geom_point(color = 'blue') +
+  geom_smooth(method=lm, color = 'red', fill = 'lightblue')
+p_ice + theme_light() + 
+  ylab("Minimum ice extent (millions of sq km)") + 
+  xlab('Year')+
+  labs(title = 'Minimum Arctic Ice Extent 1978-2021',
+          subtitle = 'Area of ocean with at lease 15% sea ice',
+          caption = 'Based on data from the national Snow and Ice Data Center. Data downloaded on 16 September 2022')
+```
