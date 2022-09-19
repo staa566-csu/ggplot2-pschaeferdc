@@ -5,23 +5,19 @@ format: html
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
+## Data Import and Cleaning
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-1 + 1
+library(tidyverse)
+data <- read_csv("C:\\Users\\pscha\\Documents\\_School\\2022_Fall_Classes\\STAA_566_DataViz\\ice.csv")
 ```
 
-You can add options to executable code like this
+##Graph
 
 ```{r}
-#| echo: false
-2 * 2
+ggplot(data, aes(year, min_extent)) +
+  geom_point() +
+  geom_smooth(method=lm) #add linear trend line
 ```
-
-The `echo: false` option disables the printing of code (only output is displayed).
